@@ -1,0 +1,264 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+
+namespace Brady
+{
+    [TestClass]
+    public class BradyTestCass
+    {
+        private string bradyShopLink = "http://automationpractice.com/";
+        private string bradyShopAccountLink = "http://automationpractice.com/index.php?controller=identity";
+        private string chromeDriverHome = @"c:\Users\Thomas\source\repos\Brady\packages\Selenium.WebDriver.3.12.0\lib\net45\";
+        private string chromeDriverWork = @"c:\Users\u6019140\source\repos\Brady\packages\Selenium.WebDriver.3.12.0\lib\net45\";
+        private OpenQA.Selenium.INavigation navigation;
+        private ChromeDriver driver;
+
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            //driver = new ChromeDriver(chromeDriverHome);
+            driver = new ChromeDriver(chromeDriverWork);
+            navigation = driver.Navigate();
+        }
+
+
+        //9. Confirm the number of products in cart = 1
+        //10. View ‘All specials’ 
+        //11. Confirm how many dresses are in list and add each to the cart
+        //12. Confirm the number of items in the cart is correct
+        //13. Confirm the discounted prices have been correctly applied to the cart
+        //14. Navigate to Dresses
+        //15. Confirm the correct page has been opened
+        //16. Using the ‘Sort by’ drop down box select
+        //a.Price: Lowest first
+        //b.Price: Highest first
+        //For each sort confirm if the items are listed correctly
+
+       [TestMethod]
+        public void DressShopTest()
+        {
+            //1. Open the browser, navigate to the website and login with your account details
+            //2. Confirm that login takes you to the correct account page
+            Login("sulinat@gmail.com", "Brady1");
+            var expectedUrl = @"http://automationpractice.com/index.php?controller=my-account";
+            var actualUrl = this.driver.Url;
+            Logger.LogResult(expectedUrl, actualUrl, "Verify URL after login.");
+
+            //3. Confirm that the First Name and Surname fields contain the correct info
+            var userName = GetUserNameFromAccountPage();
+            Logger.LogResult("Tamas", userName.FirstName, "First name is as expected.");
+            Logger.LogResult("Sulina", userName.lastName, "Last name is as expected.");
+
+            //4. Select the ‘Cart’ button and confirm the cart is currently empty
+            var cartItemNumber = GetCartItemNumber();
+            Logger.LogResult(0, cartItemNumber, "Initial cart item number is 0.");
+
+            //5. Click the ‘WOMEN’ button
+            NavigateToDressPage(DressType.Women);
+
+            //6. Select ‘Pink’ from the colour options
+            SelectColor(DressColor.Pink);
+            //7. Add the dress to the cart
+            var pinkDress = GetAvailableItems().First();
+            
+            //8. Confirm the system correctly reports ‘Product successfully added to your shopping cart
+            var dressWasAdeedToCart = AddDressToCartAndConfirm(pinkDress);
+            Logger.LogResult(true, dressWasAdeedToCart, "Pink dress was added to the cart.");
+
+            // Assert
+            Assert.IsTrue(Logger.GetFinalTestResult(), "Read log for more info.");
+            //driver.Close();
+        }
+
+        public void Login(string user, string password)
+        {
+            navigation.GoToUrl(bradyShopLink);
+            driver.Manage().Window.Maximize();
+            driver.FindElementByClassName("login").Click();
+            driver.FindElementById("email").SendKeys(user);
+            driver.FindElementById("passwd").SendKeys(password);
+            driver.FindElementById("SubmitLogin").Click();
+        }
+
+        public UserName GetUserNameFromAccountPage()
+        {
+            navigation.GoToUrl(bradyShopAccountLink);
+            var userName = new UserName();
+            userName.FirstName = driver.FindElementById("firstname").GetAttribute("value");
+            userName.lastName = driver.FindElementById("lastname").GetAttribute("value");
+            return userName;
+        }
+
+
+        public int GetCartItemNumber()
+        {
+            driver.FindElementByCssSelector(@"a[href='http://automationpractice.com/index.php?controller=order']").Click();
+            var emptyCart = driver.FindElementsByClassName("alert-warning");
+            if (emptyCart.Any())
+            {
+                return 0;
+            }
+
+            return 0;
+        }
+
+        public void NavigateToDressPage(DressType dressType)
+        {
+            driver.FindElementByCssSelector(string.Format("a[title='{0}']", dressType.GetStringValue())).Click();
+        }
+
+        public void SelectColor(DressColor dressColor)
+        {
+            var g = driver.FindElementById("ul_layered_id_attribute_group_3");
+            var f = g.FindElements(By.XPath(string.Format("//input[@*='{0}']",dressColor.ToString())));
+            driver.FindElementById("ul_layered_id_attribute_group_3").FindElement(By.LinkText(dressColor.ToString())).Click();
+        }
+
+        public IEnumerable<IWebElement> GetAvailableItems()
+        {
+            return driver.FindElementByClassName("product_list grid row").FindElements(By.ClassName("product-container"));
+        }
+
+        public bool AddDressToCartAndConfirm(IWebElement dressToAddToCart)
+        {
+            dressToAddToCart.FindElement(By.ClassName("ajax_add_to_cart_button")).Click();
+            var result = driver.FindElementsByTagName("h2").Any(x => x.Text == "Product successfully added to your shopping cart");
+            driver.FindElementByClassName("cross").Click();
+            return result;
+        }
+
+        public void BuyItem()
+        {
+            
+        }
+    }
+
+    public enum DressType
+    {
+        [StringValueAttribute("Women")]
+        Women,
+        [StringValueAttribute("Dresses")]
+        Dresses,
+        [StringValueAttribute("T-shirts")]
+        Tshirts
+    }
+
+    public enum DressColor
+    {
+        Beige,
+        White,
+        Black,
+        Orange,
+        Blue,
+        Green,
+        Yellow,
+        Pink
+    }
+
+    public class UserName
+    {
+        public string FirstName;
+        public string lastName;
+    }
+
+    public static class Logger
+    {
+        private static Dictionary<string, bool> resultList = new Dictionary<string, bool>();
+
+        public static void LogResult(string expected, string actual, string message)
+        {
+            var result = expected == actual;
+            Console.WriteLine("Result: {0}, {1}, Expected: {2}, Actual: {3}", result, message, expected, actual);
+            resultList.Add(message, result);
+        }
+
+        public static void LogResult(int expected, int actual, string message)
+        {
+            LogResult(expected.ToString(), actual.ToString(), message);
+        }
+
+        public static void LogResult(bool expected, bool actual, string message)
+        {
+            LogResult(expected.ToString(), actual.ToString(), message);
+        }
+
+        public static bool GetFinalTestResult()
+        {
+            return !resultList.Any(x => x.Value.Equals(false));
+        }
+    }
+
+    public class StringValueAttribute : Attribute
+    {
+        /// <summary>
+        /// Constructor, just takes the string value.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// [StringValue("value")]
+        /// EnumValue
+        /// </code>
+        /// </example>
+        public StringValueAttribute(string value)
+        {
+            Value = value;
+        }
+
+        /// <summary>
+        /// String value that is paired with your enum value
+        /// </summary>
+        public string Value
+        {
+            get;
+            private set;
+        }
+    }
+
+    public static class EnumExtension
+    {
+        private static string GetAttribute(string s, Enum enumeration)
+        {
+            MemberInfo[] memInfo = enumeration.GetType().GetMember(s);
+            object[] attributes = memInfo[0].GetCustomAttributes(typeof(StringValueAttribute), false);
+            if (attributes.Length > 0)
+            {
+                return ((StringValueAttribute)attributes[0]).Value;
+            }
+            return String.Empty;
+        }
+
+        public static string GetStringValue(this Enum enumeration)
+        {
+            var t = enumeration.GetType();
+
+            if (t.CustomAttributes.Any(x => x.AttributeType == typeof(FlagsAttribute)))
+            {
+                var enumValues = enumeration.ToString().Split(',');
+                var resultString = string.Empty;
+
+                foreach (var enumValue in enumValues)
+                {
+                    var value = enumValue.Trim();
+                    var result = GetAttribute(value, enumeration);
+                    if (!string.IsNullOrEmpty(result))
+                    {
+                        resultString = resultString + (string.IsNullOrEmpty(resultString) ? string.Empty : " | ") + result;
+                    }
+                }
+
+                return resultString;
+            }
+
+            return GetAttribute(enumeration.ToString(), enumeration);
+        }
+    }
+}

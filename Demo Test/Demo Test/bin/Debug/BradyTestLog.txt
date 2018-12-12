@@ -1,0 +1,114 @@
+Test run at 22:29
+Result: True, Verify URL after login.
+Result: True, First name is as expected.
+Result: True, Last name is as expected.
+Result: True, Initial cart item number is 0.
+Result: True, Pink dress was added to the cart.
+Result: True, Cart item number is 1.
+Result: True, Cart item number is 3
+Result: True, Special price 16.40 is correct
+Result: True, Special price 28.98 is correct
+Result: True, Verify URL after click on Dresses.
+Result: True, Lowest First Order verification: 0
+Result: True, Lowest First Order verification: 1
+Result: True, Lowest First Order verification: 2
+Result: True, Lowest First Order verification: 3
+Result: False, Highest First Order verification: 0
+Result: False, Highest First Order verification: 1
+Result: False, Highest First Order verification: 2
+Result: False, Highest First Order verification: 3
+Test run at 16/05/2018 22:33:38
+Result: True, Verify URL after login.
+Result: True, First name is as expected.
+Result: True, Last name is as expected.
+Result: True, Initial cart item number is 0.
+Result: True, Pink dress was added to the cart.
+Result: True, Cart item number is 1.
+Result: True, Cart item number is 3
+Result: True, Special price 16.40 is correct
+Result: True, Special price 28.98 is correct
+Result: True, Verify URL after click on Dresses.
+Result: True, Lowest First Order verification: 0
+Result: True, Lowest First Order verification: 1
+Result: True, Lowest First Order verification: 2
+Result: True, Lowest First Order verification: 3
+Result: False, Highest First Order verification: 0
+Result: False, Highest First Order verification: 1
+Result: False, Highest First Order verification: 2
+Result: False, Highest First Order verification: 3
+### Test run at 16/05/2018 22:44:19
+Result: True, Verify URL after login.
+Result: True, First name is as expected.
+Result: True, Last name is as expected.
+Result: True, Initial cart item number is 0.
+Result: True, Pink dress was added to the cart.
+Result: True, Cart item number is 1.
+Result: True, Cart item number is 3
+Result: True, Special price 16.40 is correct
+Result: True, Special price 28.98 is correct
+Result: True, Verify URL after click on Dresses.
+Result: True, Lowest First Order verification: 0
+Result: True, Lowest First Order verification: 1
+Result: True, Lowest First Order verification: 2
+Result: True, Lowest First Order verification: 3
+Result: False, Highest First Order verification: 0
+Result: False, Highest First Order verification: 1
+Result: False, Highest First Order verification: 2
+Result: False, Highest First Order verification: 3
+### Test run at 17/05/18 1:45:58 PM
+Result: True, Verify URL after login.
+Result: True, First name is as expected.
+Result: True, Last name is as expected.
+Result: True, Initial cart item number is 0.
+Result: True, Pink dress was added to the cart.
+Result: True, Cart item number is 1.
+Result: True, Cart item number is 3
+Result: True, Special price 16.40 is correct
+Result: True, Special price 28.98 is correct
+Result: True, Verify URL after click on Dresses.
+Result: True, Lowest First Order verification: 0
+Result: True, Lowest First Order verification: 1
+Result: True, Lowest First Order verification: 2
+Result: True, Lowest First Order verification: 3
+Result: False, Highest First Order verification: 0
+Result: False, Highest First Order verification: 1
+Result: False, Highest First Order verification: 2
+Result: False, Highest First Order verification: 3
+### Test run at 17/05/18 1:47:30 PM
+Result: True, Verify URL after login.
+Result: True, First name is as expected.
+Result: True, Last name is as expected.
+Result: True, Initial cart item number is 0.
+Result: True, Pink dress was added to the cart.
+Result: True, Cart item number is 1.
+Result: True, Cart item number is 3
+Result: True, Special price 16.40 is correct
+Result: True, Special price 28.98 is correct
+Result: True, Verify URL after click on Dresses.
+Result: True, Lowest First Order verification: 0
+Result: True, Lowest First Order verification: 1
+Result: True, Lowest First Order verification: 2
+Result: True, Lowest First Order verification: 3
+Result: False, Highest First Order verification: 0
+Result: False, Highest First Order verification: 1
+Result: False, Highest First Order verification: 2
+Result: False, Highest First Order verification: 3
+### Test run at 17/05/18 1:55:41 PM
+Result: True, Verify URL after login.
+Result: True, First name is as expected.
+Result: True, Last name is as expected.
+Result: True, Initial cart item number is 0.
+Result: True, Pink dress was added to the cart.
+Result: True, Cart item number is 1.
+Result: True, Cart item number is 3
+Result: True, Special price 16.40 is correct
+Result: True, Special price 28.98 is correct
+Result: True, Verify URL after click on Dresses.
+Result: True, Lowest First Order verification: 0
+Result: True, Lowest First Order verification: 1
+Result: True, Lowest First Order verification: 2
+Result: True, Lowest First Order verification: 3
+Result: False, Highest First Order verification: 0
+Result: False, Highest First Order verification: 1
+Result: False, Highest First Order verification: 2
+Result: False, Highest First Order verification: 3

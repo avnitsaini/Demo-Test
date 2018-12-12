@@ -1,0 +1,16 @@
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\Brady.dll
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\Brady.pdb
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\WebDriver.dll
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\bin\Debug\WebDriver.xml
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\obj\Debug\DemoTest.csproj.CoreCompileInputs.cache
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\obj\Debug\DemoTest.csproj.CopyComplete
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\obj\Debug\Brady.dll
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\obj\Debug\Brady.pdb
+C:\Users\avnit.saini\Desktop\Test\TestCode\Brady\Brady\obj\Debug\DemoTest.csprojAssemblyReference.cache
